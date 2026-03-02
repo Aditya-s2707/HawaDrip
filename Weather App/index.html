@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+
+    <main class="app">
+        <header class="top">
+            <div class="brand">
+                <div class="logo">⛅</div>
+                <div>
+                    <h1>Weather</h1>
+                    <p class="sub">Live forecast in seconds</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="chip" id="useMyLocationBtn" type="button" title="Use my location">📍 Location</button>
+                <button class="chip" id="themeToggle" type="button" title="Toggle theme">🌙 Dark</button>
+            </div>
+        </header>
+
+        <section class="panel">
+            <div class="search">
+                <input id="cityInput" type="text" placeholder="Search a city (e.g., Delhi, Mumbai)" />
+                <button id="searchBtn" type="button">Search</button>
+            </div>
+
+            <div class="chips" id="chips"></div>
+
+            <p id="msg" class="msg"></p>
+
+            <div id="weatherCard" class="card hidden">
+                <div class="card-left">
+                    <h2 id="cityName">—</h2>
+                    <p id="condition" class="condition">—</p>
+
+                    <div class="tempRow">
+                        <div class="temp" id="temp">—</div>
+
+                        <div class="mini">
+                            <div class="miniBox"><span>Feels</span><b id="feels">—</b></div>
+                            <div class="miniBox"><span>Humidity</span><b id="humidity">—</b></div>
+                            <div class="miniBox"><span>Wind</span><b id="wind">—</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-right">
+
+                    <svg class="illu" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#ffdd88" />
+                                <stop offset="1" stop-color="#ff7aa2" />
+                            </linearGradient>
+                            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#c7d2fe" />
+                                <stop offset="1" stop-color="#a7f3d0" />
+                            </linearGradient>
+                            <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="8" />
+                            </filter>
+                        </defs>
+
+                        <circle cx="82" cy="72" r="44" fill="url(#g1)" />
+                        <g filter="url(#blur)">
+                            <ellipse cx="175" cy="120" rx="74" ry="34" fill="#ffffff" opacity="0.6" />
+                        </g>
+                        <g>
+                            <ellipse cx="165" cy="118" rx="82" ry="38" fill="#ffffff" opacity="0.9" />
+                            <ellipse cx="115" cy="118" rx="42" ry="28" fill="#ffffff" opacity="0.95" />
+                            <ellipse cx="210" cy="112" rx="48" ry="30" fill="#ffffff" opacity="0.95" />
+                        </g>
+
+                        <path d="M110 170 C130 150, 150 150, 170 170" stroke="url(#g2)" stroke-width="10"
+                            stroke-linecap="round" fill="none" />
+                        <path d="M150 185 C170 165, 190 165, 210 185" stroke="url(#g2)" stroke-width="10"
+                            stroke-linecap="round" fill="none" />
+                    </svg>
+
+                    <div class="tag">✨ Modern UI</div>
+                </div>
+
+
+                <div class="mapWrap">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="foot">
+            <span>Made by Adi</span>
+            <span class="dot">•</span>
+            <span>OpenWeather API</span>
+        </footer>
+    </main>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
